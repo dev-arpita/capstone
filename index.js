@@ -31,16 +31,9 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
     })
     .catch(err => console.error(err))
 
-/**
- * Challenge: log the current time to the console, formatted
- * like this:
- *
- * 1:30 PM
- *
- * Use Google and Stack Overflow to find the best way.
- *
- * Good luck! 👍
- */
+function getCurrentTime() {
+    const date = new Date()
+    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
+}
 
-const date = new Date()
-console.log(date.toLocaleTimeString("en-us", {timeStyle: "short"}))
+setInterval(getCurrentTime, 1000)
