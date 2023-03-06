@@ -31,9 +31,32 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
     })
     .catch(err => console.error(err))
 
-function getCurrentTime() {
-    const date = new Date()
-    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
-}
+// function getCurrentTime() {
+//     const date = new Date()
+//     document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
+// }
 
-setInterval(getCurrentTime, 1000)
+// setInterval(getCurrentTime, 1000)
+
+
+/**
+ * Challenge: Learn how to access the user's coordinates
+ * by using the Geolocation Web API!
+ *
+ * Log the user's position to the console.
+ */
+
+navigator.geolocation.getCurrentPosition(position => {
+    console.log(position)
+});
+
+// coords: GeolocationCoordinates
+    // accuracy: 20
+    // altitude: null
+    // altitudeAccuracy: null
+    // heading: null
+    // latitude: 40.5269232
+    // longitude: -111.916174
+    // speed: null
+    // __proto__: GeolocationCoordinates
+// timestamp: 1623170827394
