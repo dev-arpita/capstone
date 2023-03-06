@@ -48,19 +48,16 @@ navigator.geolocation.getCurrentPosition(position => {
         })
         .then(data => {
             const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-            console.log(data)
             document.getElementById("weather").innerHTML = `
-                <div class="weather-col1">
-                    <img src=${iconUrl} />
-                    <span>${Math.round(data.main.temp)}°</span>
-                </div>
-                <div>${data.name}</div>
+                <img class="icon-img" src=${iconUrl} />
+                <p class="temp">${Math.round(data.main.temp)}º</p>
+                <p class="city-name">${data.name}</p>
             `
         })
         .catch(err => console.error(err))
 });
 
 /**
- * Challenge: Display the temperature (rounded to the nearest degree)
- * and the city. Don't worry about the layout for now.
+ * Challenge: Try to lay out the weather similar to how
+ * Momentum does it.
  */

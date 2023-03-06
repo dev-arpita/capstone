@@ -49,13 +49,28 @@ div#crypto-top>span {
     margin-left: 10px;
 }
 
-.weather-col1,
-#weather {
-    display: flex;
-    align-items: center;
+.icon-img {
+    /* border: 1px solid red; */
+    width: 70px;
 }
 
 #weather {
-    flex-direction: column;
-    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: center;
+    align-self: start;
+}
+
+
+.city-name {
+    margin-top: 0;
+    text-align: end;
+    font-size: 20px;
+    width: 100%;
+}
+
+.temp {
+    font-size: 45px;
+    margin: -5px;
 }
