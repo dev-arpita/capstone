@@ -31,15 +31,15 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
     })
     .catch(err => console.error(err))
 
-// function getCurrentTime() {
-//     const date = new Date()
-//     document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
-// }
+function getCurrentTime() {
+    const date = new Date()
+    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
+}
 
-// setInterval(getCurrentTime, 1000)
+setInterval(getCurrentTime, 1000)
 
 navigator.geolocation.getCurrentPosition(position => {
-    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`)
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
         .then(res => {
             if (!res.ok) {
                 throw Error("Weather data not available")
@@ -49,15 +49,10 @@ navigator.geolocation.getCurrentPosition(position => {
         .then(data => {
             const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             document.getElementById("weather").innerHTML = `
-                <img class="icon-img" src=${iconUrl} />
-                <p class="temp">${Math.round(data.main.temp)}º</p>
-                <p class="city-name">${data.name}</p>
+                <img src=${iconUrl} />
+                <p class="weather-temp">${Math.round(data.main.temp)}º</p>
+                <p class="weather-city">${data.name}</p>
             `
         })
         .catch(err => console.error(err))
 });
-
-/**
- * Challenge: Try to lay out the weather similar to how
- * Momentum does it.
- */
