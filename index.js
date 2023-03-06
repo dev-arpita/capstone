@@ -39,7 +39,7 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
 // setInterval(getCurrentTime, 1000)
 
 navigator.geolocation.getCurrentPosition(position => {
-    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`)
         .then(res => {
             if (!res.ok) {
                 throw Error("Weather data not available")
@@ -47,25 +47,20 @@ navigator.geolocation.getCurrentPosition(position => {
             return res.json()
         })
         .then(data => {
-            // console.log(data)
             const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+            console.log(data)
             document.getElementById("weather").innerHTML = `
-                <img src=${iconUrl} />
+                <div class="weather-col1">
+                    <img src=${iconUrl} />
+                    <span>${Math.round(data.main.temp)}°</span>
+                </div>
+                <div>${data.name}</div>
             `
         })
         .catch(err => console.error(err))
 });
 
 /**
- * Challenge: Display the weather icon as an <img />
- * inside the <div id="weather">
- *
- * This site shows an example URL for the icon:
- * https://openweathermap.org/weather-conditions
- *
- * Note: the weather icon is found instead data.weather, which is
- * an array of weather for that area. You can just access the first
- * item in that array to get the icon ID.
+ * Challenge: Display the temperature (rounded to the nearest degree)
+ * and the city. Don't worry about the layout for now.
  */
-
-// http://openweathermap.org/img/wn/01d@2x.png

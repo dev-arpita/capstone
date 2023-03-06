@@ -48,3 +48,14 @@ div#crypto-top {
 div#crypto-top>span {
     margin-left: 10px;
 }
+
+.weather-col1,
+#weather {
+    display: flex;
+    align-items: center;
+}
+
+#weather {
+    flex-direction: column;
+    margin: 0;
+}
