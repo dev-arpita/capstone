@@ -40,23 +40,39 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
 
 
 /**
- * Thought Experiment:
+ * Challenge: Get the user's current weather for their area and
+ * log it to the console
  *
- * What would getCurrentPosition() look like if it were
- * using promises instead of callbacks? Replace what we have
- * below with your best guess. (It won't function correctly)
+ * BaseURL: https://apis.scrimba.com/openweathermap/data/2.5/weather
+ * Queries to include:
+ *     - lat (latitude)
+ *     - lon (longitude)
+ *     - units (imperial or metric)
  */
 
-// navigator.geolocation.getCurrentPosition(position => {
-//     console.log(position)
-// });
+navigator.geolocation.getCurrentPosition(position => {
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
+        .then(res => {
+            if (!res.ok) {
+                throw Error("Weather data not available")
+            }
+            return res.json()
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => console.error(err))
+});
 
-navigator.geolocation.getCurrentPosition()
-    .then(position => {
-        console.log(position)
-    })
 
-async function getLocation() {
-    const position = await navigator.geolocation.getCurrentPosition()
-    console.log(position)
-}
+// position: GeolocationPosition
+    // coords: GeolocationCoordinates
+        // accuracy: 20
+        // altitude: null
+        // altitudeAccuracy: null
+        // heading: null
+        // latitude: 40.5269232
+        // longitude: -111.916174
+        // speed: null
+        // __proto__: GeolocationCoordinates
+    // timestamp: 1623170827394
