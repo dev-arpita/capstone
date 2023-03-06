@@ -40,23 +40,23 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
 
 
 /**
- * Challenge: Learn how to access the user's coordinates
- * by using the Geolocation Web API!
+ * Thought Experiment:
  *
- * Log the user's position to the console.
+ * What would getCurrentPosition() look like if it were
+ * using promises instead of callbacks? Replace what we have
+ * below with your best guess. (It won't function correctly)
  */
 
-navigator.geolocation.getCurrentPosition(position => {
-    console.log(position)
-});
+// navigator.geolocation.getCurrentPosition(position => {
+//     console.log(position)
+// });
 
-// coords: GeolocationCoordinates
-    // accuracy: 20
-    // altitude: null
-    // altitudeAccuracy: null
-    // heading: null
-    // latitude: 40.5269232
-    // longitude: -111.916174
-    // speed: null
-    // __proto__: GeolocationCoordinates
-// timestamp: 1623170827394
+navigator.geolocation.getCurrentPosition()
+    .then(position => {
+        console.log(position)
+    })
+
+async function getLocation() {
+    const position = await navigator.geolocation.getCurrentPosition()
+    console.log(position)
+}
